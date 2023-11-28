@@ -14,7 +14,7 @@ export const useGetFetch = (url: string) => {
         setError("");
         dispatch(setAllData(resData.data));
       } catch (error) {
-        console.log("useGetFetch error:", error);
+        // console.log("useGetFetch error:", error);
         setError(String(error));
       }
     };
