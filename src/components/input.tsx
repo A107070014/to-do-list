@@ -24,10 +24,7 @@ export default function Input() {
       name: value,
       status: "pending",
     };
-    const { data } = await postFetch<createListType>(
-      "http://localhost:8000/lists",
-      reqData
-    );
+    const { data } = await postFetch<createListType>("/api/lists", reqData);
     dispatch(createData(data));
     setValue("");
     setErrorMsg("");
@@ -40,7 +37,10 @@ export default function Input() {
           type="text"
           placeholder="請輸入代辦事項..."
           value={value}
-          className={twMerge("input-text mr-2", errorMsg && 'border border-solid border-red-500')}
+          className={twMerge(
+            "input-text mr-2",
+            errorMsg && "border border-solid border-red-500"
+          )}
           onChange={(e) => setValue(e.target.value)}
         />
         {errorMsg && (

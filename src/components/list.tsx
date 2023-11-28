@@ -14,7 +14,7 @@ export default function List() {
   const dispatch = useDispatch();
   const activeTab = useSelector((state: stateType) => state.activeTab);
 
-  const { allData, error } = useGetFetch("http://localhost:8000/lists");
+  const { allData, error } = useGetFetch("/api/lists");
   const data = allData.filter((item) => {
     if (activeTab === EStatus.All) return true;
     if (item.status === activeTab) return true;
@@ -28,15 +28,12 @@ export default function List() {
     const status =
       item.status === EStatus.Pending ? EStatus.Completed : EStatus.Pending;
     const reqData = { ...item, status };
-    await editFetch<editListType>(
-      `http://localhost:8000/lists/${item.id}`,
-      reqData
-    );
+    await editFetch<editListType>(`/api/lists/${item.id}`, reqData);
     dispatch(editData({ id: item.id, status }));
   }
 
   async function _deleteList(id: number) {
-    await deleteFetch(`http://localhost:8000/lists/${id}`);
+    await deleteFetch(`/api/lists/${id}`);
     dispatch(deleteData(id));
   }
 
