@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .input {
+    &-text {
+      @apply w-full h-10;
+      @apply text-sm;
+      @apply px-2.5 py-0;
+      @apply rounded-md;
+    }
+
+    &-checkbox {
+      @apply w-4 h-4;
+    }
+  }
+}
+
+@layer base {
+  * {
+    @apply box-border;
+    @apply m-0;
+    @apply p-0;
+  }
+
+  body {
+    @apply bg-body-color bg-body-image;
+  }
+
+  main {
+    @apply w-screen h-screen;
+    @apply px-1/5 py-10;
+  }
+
+  h1 {
+    @apply text-4xl text-white font-medium;
+    @apply text-center;
+    @apply mb-10;
+  }
+
+  input {
+    &:focus,
+    &:hover {
+      @apply outline-none;
+    }
+  }
+}
