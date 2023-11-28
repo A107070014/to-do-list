@@ -5,7 +5,6 @@ import autoprefixer from 'autoprefixer'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: "/to-do-list",
   plugins: [react()],
   css: {
     postcss: {
@@ -18,7 +17,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: "http://localhost:8000/to-do-list",
+        target: "http://localhost:8000",
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, '')
       }
